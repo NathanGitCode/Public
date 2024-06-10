@@ -1,0 +1,6 @@
+# Visual Studio User Files & Build Artifacts
+*.suo
+*.user
+.vs/
+[Bb]in/
+[Oo]bj/
