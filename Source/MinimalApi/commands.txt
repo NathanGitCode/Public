@@ -1,0 +1,35 @@
+# All Docker commands can become multiline by using \ to indicate a non-terminating end of line
+
+# Config credentials for Docker locally
+docker login
+
+# Images have the following structure:
+Username --v     v---Repository name
+dockerutility/minimalapi:test
+This is the image name ---^
+
+# Build a new docker image:
+# -f this flag should allow for the path to the Dockerfile, letting it be stored elsewhere?
+docker image build -t dockerutility/minimalapi:test .
+This period is important as it specifies where Docke^r can find all the stuff, ie in the current folder
+
+# Push an image to the image repo:
+# This overwrites any existing images with the same name, ie test
+docker image push dockerutility/minimalapi:test
+
+# See images stored locally
+docker image ls
+
+# Remove a local image
+docker image rm dockerutility/minimalapi:test
+
+# Run a container
+# -d flag means run in the background, ie detatched from the current terminal
+# -p is the ports flag, with syntax host:container where host is the machine running the container, and container is the port the application itself is running on, inside the container
+docker container run -d --name api -p 8000:8080 docker.io/dockerutility/minimalapi:test
+
+# Stop container by its name
+docker stop api
+
+# Delete a container by its name
+docker rm api
